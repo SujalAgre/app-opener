@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Opener</title>
+    <style>
+        * {
+            font-family: Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="device" style="display: none;"></div>
+    <h1>
+        <a id="videoLink">Aszu - I’ve Been Through This</a>
+    </h1>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let device = document.getElementById("device");
+            let linkElement = document.getElementById("videoLink");
+
+            if ('ontouchstart' in window) {
+                device.innerHTML = "mobile";
+                linkElement.setAttribute("href", "vnd.youtube:6fNUEGdB0")
+            } else {
+                device.innerHTML = "desktop"
+                linkElement.setAttribute("href", "https://youtube.com/watch?v=a-6fNUEGdB0")
+            }
+
+            var evt = new MouseEvent('click', {
+                view: window,
+                bubbles: true,
+                cancelable: true,
+                clientX: 100,
+            });
+
+            linkElement.dispatchEvent(evt);
+        });
+    </script>
+</body>
+
+</html>
